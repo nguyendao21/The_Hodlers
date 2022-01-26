@@ -15,6 +15,7 @@ import plotly.express as px
 import plotly.offline as pyo
 import plotly.graph_objects as go
 
+starting_value = 1200
 
 # In[4]:
 
@@ -28,14 +29,14 @@ wheat_df = pd.read_csv(
 
 
 wheat_df = wheat_df.drop(columns=['Volume', 'Open', 'High', 'Low'])
-wheat_df
+
 
 
 # In[5]:
 
 
 wheat_df = wheat_df.rename(columns={'Close/Last' : 'Wheat'})
-wheat_df
+
 
 
 # In[77]:
@@ -45,14 +46,13 @@ wheat_df
 
 
 wheat_cleaned = wheat_df.sort_index().truncate(before = '04/15/2020', after ='12/31/2021')
-wheat_cleaned.head()
+
 
 
 # In[78]:
 
 
 
-wheat_cleaned.dtypes
 
 
 # In[7]:
@@ -66,14 +66,14 @@ corn_df = pd.read_csv(
 )
 
 corn_df = corn_df.drop(columns=['Volume', 'Open', 'High', 'Low'])
-corn_df
+
 
 
 # In[8]:
 
 
 corn_df = corn_df.rename(columns={'Close/Last' : 'Corn'})
-corn_df
+
 
 
 # In[81]:
@@ -82,7 +82,7 @@ corn_df
 
 # Filtering my dataframes so that dates that are unused are removed.
 corn_cleaned = corn_df.sort_index().truncate(before = '04/15/2020', after ='12/31/2021')
-corn_cleaned
+
 
 
 # In[9]:
@@ -96,7 +96,7 @@ fd_cattle_df = pd.read_csv(
 )
 
 fd_cattle_df = fd_cattle_df.drop(columns=['Volume', 'Open', 'High', 'Low'])
-fd_cattle_df
+
 
 
 
@@ -104,7 +104,7 @@ fd_cattle_df
 
 
 fd_cattle_df = fd_cattle_df.rename(columns={'Close/Last' : 'FD Cattle'})
-fd_cattle_df
+
 
 
 # In[14]:
@@ -112,13 +112,12 @@ fd_cattle_df
 
 # Filtering my dataframes so that dates that are unused are removed.
 fd_cattle_cleaned = fd_cattle_df.sort_index().truncate(before = '04/15/2020', after ='12/31/2021')
-fd_cattle_cleaned.head()
+
 
 
 # In[15]:
 
 
-fd_cattle_cleaned.dtypes
 
 
 # In[16]:
@@ -132,14 +131,14 @@ hogs_df = pd.read_csv(
 )
 
 hogs_df = hogs_df.drop(columns=['Volume', 'Open', 'High', 'Low'])
-hogs_df
+
 
 
 # In[87]:
 
 
 hogs_df = hogs_df.rename(columns={'Close/Last' : 'Hogs'})
-hogs_df
+
 
 
 # In[88]:
@@ -147,13 +146,11 @@ hogs_df
 
 # Filtering my dataframes so that dates that are unused are removed.
 hogs_cleaned = hogs_df.sort_index().truncate(before = '04/15/2020', after ='12/31/2021')
-hogs_cleaned
+
 
 
 # In[89]:
 
-
-hogs_cleaned.dtypes
 
 
 # In[17]:
@@ -173,7 +170,7 @@ gf_cattle = gf_cattle.drop(columns=['Volume', 'Open', 'High', 'Low'])
 
 
 gf_cattle = gf_cattle.rename(columns={'Close/Last' : 'GF Cattle'})
-gf_cattle
+
 
 
 # In[19]:
@@ -181,7 +178,7 @@ gf_cattle
 
 # Filtering my dataframes so that dates that are unused are removed.
 gf_cattle_cleaned = gf_cattle.sort_index().truncate(before = '04/15/2020', after ='12/31/2021')
-gf_cattle_cleaned
+
 
 
 # In[93]:
@@ -190,7 +187,7 @@ gf_cattle_cleaned
 # Using Concat to combine all dataframes into one
 
 agriculture_df_closing_price = pd.concat([wheat_cleaned, corn_cleaned, fd_cattle_cleaned, hogs_cleaned, gf_cattle_cleaned], axis = 1, join = "inner")
-agriculture_df_closing_price
+
 
 
 # In[94]:
@@ -202,20 +199,14 @@ agriculture_df_daily_returns = agriculture_df_closing_price.pct_change().dropna(
 # In[95]:
 
 
-agriculture_df_daily_returns
+
 
 
 # In[96]:
 
 
 #define the stimulus starting amoung in var
-starting_value= float(input("starting amount"))
 
-
-# In[97]:
-
-
-starting_value
 
 
 # In[98]:
@@ -225,7 +216,7 @@ starting_value
 
 wheat_daily_returns = wheat_cleaned.pct_change()
 
-wheat_daily_returns.head()
+
 
 
 # In[99]:
@@ -233,7 +224,7 @@ wheat_daily_returns.head()
 
 wheat_daily_returns['Portfolio'] = pd.NaT
 
-wheat_daily_returns
+
 
 
 # In[100]:
@@ -260,7 +251,6 @@ wheat.head()
 
 corn_daily_returns = corn_cleaned.pct_change()
 
-corn_daily_returns.head()
 
 
 # In[104]:
@@ -268,7 +258,7 @@ corn_daily_returns.head()
 
 corn_daily_returns['Portfolio'] = pd.NaT
 
-corn_daily_returns
+
 
 
 # In[105]:
@@ -286,7 +276,7 @@ corn = corn_daily_returns.rename(columns={'Corn':'Corn Daily Returns',"Portfolio
 # In[107]:
 
 
-corn.tail()
+
 
 
 # In[108]:
@@ -294,7 +284,7 @@ corn.tail()
 
 fd_cattle_daily_returns = fd_cattle_cleaned.pct_change()
 
-fd_cattle_daily_returns.head()
+
 
 
 # In[109]:
@@ -302,7 +292,7 @@ fd_cattle_daily_returns.head()
 
 fd_cattle_daily_returns['Portfolio'] = pd.NaT
 
-fd_cattle_daily_returns
+
 
 
 # In[110]:
@@ -320,7 +310,7 @@ fd_cattle = fd_cattle_daily_returns.rename(columns={'FD Cattle':'FD Cattle Daily
 # In[112]:
 
 
-fd_cattle
+
 
 
 # In[113]:
@@ -328,7 +318,7 @@ fd_cattle
 
 hogs_daily_returns = hogs_cleaned.pct_change()
 
-hogs_daily_returns.head()
+
 
 
 # In[114]:
@@ -336,7 +326,6 @@ hogs_daily_returns.head()
 
 hogs_daily_returns['Portfolio'] = pd.NaT
 
-hogs_daily_returns
 
 
 # In[115]:
@@ -349,7 +338,7 @@ hogs_daily_returns = hogs_daily_returns.assign(Portfolio=(1+hogs_daily_returns['
 
 
 hogs = hogs_daily_returns.rename(columns={'Hogs':'Hogs Daily Returns',"Portfolio":"Hogs Port"})
-hogs.head()
+
 
 
 # In[117]:
@@ -357,7 +346,7 @@ hogs.head()
 
 gf_cattle_daily_returns = gf_cattle_cleaned.pct_change()
 
-gf_cattle_daily_returns.head()
+
 
 
 # In[118]:
@@ -365,7 +354,7 @@ gf_cattle_daily_returns.head()
 
 gf_cattle_daily_returns['Portfolio'] = pd.NaT
 
-gf_cattle_daily_returns
+
 
 
 # In[119]:
@@ -378,7 +367,6 @@ gf_cattle_daily_returns = gf_cattle_daily_returns.assign(Portfolio=(1+gf_cattle_
 
 
 gf_cattle = gf_cattle_daily_returns.rename(columns={'FD Cattle':'FD Cattle Daily Returns',"Portfolio":"GF Cattle Port"})
-gf_cattle.head()
 
 
 # In[122]:
@@ -390,20 +378,18 @@ agriculture_daily_returns = pd.concat([wheat, corn, fd_cattle, hogs, gf_cattle],
 # In[123]:
 
 
-agriculture_daily_returns
 
 
 # In[128]:
 
 
-agriculture_daily_returns.plot()
 
 
 # In[129]:
 
 
 agriculture_daily_returns_sliced = agriculture_daily_returns.iloc[:, [1,3,5,7,9]]
-agriculture_daily_returns_sliced
+
 
 
 # In[ ]:
