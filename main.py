@@ -78,7 +78,7 @@ fig.show()
 #Build a figure for all series
 fig_dr = px.line(final_port_vol, x=final_port_vol.index, y = final_port_vol.columns)
 #Map lines/series to groups
-maps = {'Crypto': ['BTC Daily Returns', 'ETH Daily Returns', 'TRX Daily Returns', 'XMR Daily Returns', 'XLM Returns'],
+maps = {'Crypto': ['BTC Daily Returns', 'ETH Daily Returns', 'TRX Daily Returns', 'XMR Daily Returns', 'XLM Daily Returns'],
            'Agriculture':['Wheat Daily Returns', 'Corn Daily Returns', "FD Cattle Daily Returns", "Hogs Daily Returns", 'GF Cattle']}
 
 #Create group and trace visibilites
