@@ -5,28 +5,27 @@
 ---
 
 ## Technologies
--requirements
-python3.0
-import sys 
-import fire
-import csv
-import questionary
-import pandas as pd 
-from pathlib import Path
+--Requirements
+python 3.0
 
-import plotly.express as px
-import plotly.offline as pyo
-import plotly.graph_objects as go
+- [plotly](https://pypi.org/project/plotly/) - for analyzing data 
+- [pandas](https://pypi.org/project/pandas/) - for analyzing data 
 
 ---
 
 ## Installation Guide
 
-Please download the entire application folder to run the program properly.
+Before running the application first install the following dependencies:
 
+```python
+  pip install pandas
+  pip install jupyterlab
+  pip install plotly 
 
+```
+---
 ## Usage
-
+To properly utilize the application, clone the repository using 'git clone' and navigate to main.py.
 
 
 ---

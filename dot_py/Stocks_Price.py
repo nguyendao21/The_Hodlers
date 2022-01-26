@@ -561,53 +561,50 @@ stocks_sliced
 # In[101]:
 
 
-#Build a figure for all series
-fig = px.line(stocks_sliced, x=stocks_sliced.index, y = stocks_sliced.columns, labels = {'variable': 'Portfolio Return', 'value': 'Price'})
-#Map lines/series to groups
-maps = {'group 1': ['AMC Port', 'SPY Port'],
-           'group 2':['TSLA Port', 'MSTR Port', "GME Port"]}
+  fig = px.line(stocks_sliced, x=stocks_sliced.index, y = stocks_sliced.columns)
+    #Map lines/series to groups
+    maps = {'group 1': ['BTC Port', 'ETH Port'],
+           'group 2':['TRX Port', 'XMR Port', "XLM Port"]}
 
-#Create group and trace visibilites
-group = []
-vis = []
-visList = []
-for m in maps.keys():
-    for col in stocks_sliced.columns:
-        if col in maps[m]:
-            vis.append(True)
-        else:
-            vis.append(False)
-    group.append(m)
-    visList.append(vis)
+    #Create group and trace visibilites
+    group = []
     vis = []
+    visList = []
+    for m in maps.keys():
+        for col in crypto_sliced.columns:
+            if col in maps[m]:
+                vis.append(True)
+            else:
+                vis.append(False)
+        group.append(m)
+        visList.append(vis)
+        vis = []
     
-#Create buttons for each group
-buttons = []
-for i, g in enumerate(group):
-    button =  dict(label=g,
+    #Create buttons for each group
+    buttons = []
+    for i, g in enumerate(group):
+        button =  dict(label=g,
                    method = 'restyle',
                     args = ['visible',visList[i]])
-    buttons.append(button)
+        buttons.append(button)
 
-buttons = [{'label': 'all',
+    buttons = [{'label': 'all',
                  'method': 'restyle',
                  'args': ['visible', [True, True, True, True, True, True]]}] + buttons
 
                      
 
-# update layout with buttons                       
-fig.update_layout(
+    # update layout with buttons                       
+    fig.update_layout(
     updatemenus=[
         dict(
         type="dropdown",
-        direction="down",
+        direction="right",
         buttons = buttons)
-    ],
-)
-# buttons
-fig.show()
-
-
+        ],
+    )
+    # buttons
+    fig.show()
 # In[ ]:
 
 
