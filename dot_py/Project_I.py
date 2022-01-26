@@ -405,10 +405,6 @@ crypto_new = pd.concat([btc, eth, trx, xmr, xlm],axis=1)
 
 
 
-# In[52]:
-
-
-
 # In[53]:
 
 
@@ -417,7 +413,8 @@ crypto_sliced = crypto_new.iloc[:,[1,3,5,7,9]]
 
 
 
-# In[6]:
+#Create a dataframe to filter out daily returns % change.
+crypto_sliced_vol = crypto_new.iloc[:,[0,2,4,6,8]]
 
 
 

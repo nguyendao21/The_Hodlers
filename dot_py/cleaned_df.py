@@ -392,7 +392,9 @@ agriculture_daily_returns_sliced = agriculture_daily_returns.iloc[:, [1,3,5,7,9]
 
 
 
-# In[ ]:
+
+#Create a dataframe to filter out daily returns % change.
+agriculture_daily_returns_sliced_vol = agriculture_daily_returns.iloc[:, [0,2,4,6,8]]
 
 
 

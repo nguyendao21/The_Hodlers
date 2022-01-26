@@ -13,10 +13,17 @@ from dot_py.Project_I import crypto_sliced
 from dot_py.Stimulous_Check_Profit_Analyzer import resources_sliced
 from dot_py.Stocks_Price import stocks_sliced 
 
+#Import Daily Returns(%) df of each asset category.
+from dot_py.Project_I import crypto_sliced_vol
+from dot_py.cleaned_df import agriculture_daily_returns_sliced_vol
+
+#Concatenate portfolio dataframes into one. 
 final_port = pd.concat([crypto_sliced, agriculture_daily_returns_sliced, resources_sliced, stocks_sliced], axis=1)
 
+#Concatenate daily returns % dataframes into one. 
+final_port_vol = pd.concat([agriculture_daily_returns_sliced_vol, crypto_sliced_vol], axis=1)
 
-#Build a figure for all series
+#Build a figure for the portfolio dataframe.
 fig = px.line(final_port, x=final_port.index, y = final_port.columns)
 #Map lines/series to groups
 maps = {'Agriculture': ['Wheat Port', 'Corn Port','Hogs Port', 'FD Cattle Port', 'GF Cattle Port'],
@@ -63,3 +70,53 @@ fig.update_layout(
 )
 # buttons
 fig.show()
+
+
+
+#Create graph for Daily Returns (%)
+#Create a plot for daily returns to demonstrate volatility. 
+#Build a figure for all series
+fig_dr = px.line(final_port_vol, x=final_port_vol.index, y = final_port_vol.columns)
+#Map lines/series to groups
+maps = {'Crypto': ['BTC Daily Returns', 'ETH Daily Returns', 'TRX Daily Returns', 'XMR Daily Returns', 'XLM Returns'],
+           'Agriculture':['Wheat Daily Returns', 'Corn Daily Returns', "FD Cattle Daily Returns", "Hogs Daily Returns", 'GF Cattle']}
+
+#Create group and trace visibilites
+group = []
+vis = []
+visList = []
+for m in maps.keys():
+    for col in final_port_vol.columns:
+        if col in maps[m]:
+            vis.append(True)
+        else:
+            vis.append(False)
+    group.append(m)
+    visList.append(vis)
+    vis = []
+    
+#Create buttons for each group
+buttons = []
+for i, g in enumerate(group):
+    button =  dict(label=g,
+                   method = 'restyle',
+                    args = ['visible',visList[i]])
+    buttons.append(button)
+
+buttons = [{'label': 'all',
+                 'method': 'restyle',
+                 'args': ['visible', [True, True, True, True, True, True]]}] + buttons
+
+                     
+
+# update layout with buttons                       
+fig_dr.update_layout(
+    updatemenus=[
+        dict(
+        type="dropdown",
+        direction="down",
+        buttons = buttons)
+    ],
+)
+# buttons
+fig_dr.show()
