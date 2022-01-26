@@ -28,7 +28,7 @@ import plotly.graph_objects as go
 # Set the index to the column "Date".
 # Set the parse_date and infer_datetime_format parameters.
 gold_df = pd.read_csv(
-    Path('../csv_data/csv_files_resources/gold.csv'),
+    Path('./csv_data/csv_files_resources/gold.csv'),
     index_col = 'Date',
     parse_dates = True,
     infer_datetime_format = True)
@@ -54,7 +54,7 @@ gold_new.head()
 
 
 silver_df = pd.read_csv(
-    Path('../csv_data/csv_files_resources/silver.csv'),
+    Path('./csv_data/csv_files_resources/silver.csv'),
     index_col = 'Date',
     parse_dates = True,
     infer_datetime_format = True)
@@ -80,7 +80,7 @@ silver_new.head()
 
 
 crude_oil_df = pd.read_csv(
-    Path('../csv_data/csv_files_resources/crude_oil.csv'),
+    Path('./csv_data/csv_files_resources/crude_oil.csv'),
     index_col = 'Date',
     parse_dates = True,
     infer_datetime_format = True)
@@ -106,7 +106,7 @@ crude_oil_new.head()
 
 
 lumber_df = pd.read_csv(
-    Path('../csv_data/csv_files_resources/lumber.csv'),
+    Path('./csv_data/csv_files_resources/lumber.csv'),
     index_col = 'Date',
     parse_dates = True,
     infer_datetime_format = True)
@@ -132,7 +132,7 @@ lumber_new.head()
 
 
 gasoline_df = pd.read_csv(
-    Path('../csv_data/csv_files_resources/gasoline.csv'),
+    Path('./csv_data/csv_files_resources/gasoline.csv'),
     index_col = 'Date',
     parse_dates = True,
     infer_datetime_format = True)

@@ -20,7 +20,7 @@ import plotly.graph_objects as go
 
 
 wheat_df = pd.read_csv(
-    Path("../csv_data/csv_files_agriculture/zw_wheat.csv"),
+    Path("./csv_data/csv_files_agriculture/zw_wheat.csv"),
     index_col='Date',
     parse_dates=True,
     infer_datetime_format=True
@@ -59,7 +59,7 @@ wheat_cleaned.dtypes
 
 
 corn_df = pd.read_csv(
-    Path("../csv_data/csv_files_agriculture/zc_corn.csv"),
+    Path("./csv_data/csv_files_agriculture/zc_corn.csv"),
     index_col='Date',
     parse_dates=True,
     infer_datetime_format=True
@@ -89,7 +89,7 @@ corn_cleaned
 
 
 fd_cattle_df = pd.read_csv(
-    Path("../csv_data/csv_files_agriculture/fd_cattle.csv"),
+    Path("./csv_data/csv_files_agriculture/fd_cattle.csv"),
     index_col='Date',
     parse_dates=True,
     infer_datetime_format=True
@@ -125,7 +125,7 @@ fd_cattle_cleaned.dtypes
 
 
 hogs_df = pd.read_csv(
-    Path("../csv_data/csv_files_agriculture/he_hogs.csv"),
+    Path("./csv_data/csv_files_agriculture/he_hogs.csv"),
     index_col='Date',
     parse_dates=True,
     infer_datetime_format=True
@@ -160,7 +160,7 @@ hogs_cleaned.dtypes
 
 
 gf_cattle = pd.read_csv(
-    Path("../csv_data/csv_files_agriculture/gf_cattle.csv"),
+    Path("./csv_data/csv_files_agriculture/gf_cattle.csv"),
     index_col='Date',
     parse_dates=True,
     infer_datetime_format=True
