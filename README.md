@@ -34,7 +34,7 @@ To properly utilize the application, clone the repository using 'git clone' and 
 
 [Dao, Nguyen](https://www.linkedin.com/in/nguyen-dao-a55669215/)
 
-Harrington, Sean
+Harrington, Sean(https://www.linkedin.com/in/sean-harrington16/)
 
 Rudd, Matthew 
 
