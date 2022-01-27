@@ -32,9 +32,12 @@ To properly utilize the application, clone the repository using 'git clone' and 
 
 ## Contributors
 
-Dao, Nguyen 
+[Dao, Nguyen](https://www.linkedin.com/in/nguyen-dao-a55669215/)
+
 Harrington, Sean
+
 Rudd, Matthew 
+
 Miklas, Christopher. 
 
 ---
