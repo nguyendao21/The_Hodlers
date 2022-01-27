@@ -469,5 +469,6 @@ stocks_new = pd.concat([AMC, GME, MSTR, SPY, TSLA],axis=1, join ='inner')
 stocks_sliced = stocks_new.iloc[:,[1,3,5,7,9]]
 
 
-
+#Create a dataframe to filter out daily returns % change.
+stocks_sliced_vol = stocks_new.iloc[:, [0,2,4,6,8]]
 

@@ -16,12 +16,14 @@ from dot_py.Stocks_Price import stocks_sliced
 #Import Daily Returns(%) df of each asset category.
 from dot_py.Project_I import crypto_sliced_vol
 from dot_py.cleaned_df import agriculture_daily_returns_sliced_vol
+from dot_py.Stimulous_Check_Profit_Analyzer import resources_sliced_vol
+from dot_py.Stocks_Price import stocks_sliced_vol
 
 #Concatenate portfolio dataframes into one. 
 final_port = pd.concat([crypto_sliced, agriculture_daily_returns_sliced, resources_sliced, stocks_sliced], axis=1).dropna() #otherwise there are gaps in the lines due to 24/7 crypto tradeability. 
 
 #Concatenate daily returns % dataframes into one. 
-final_port_vol = pd.concat([agriculture_daily_returns_sliced_vol, crypto_sliced_vol], axis=1).dropna()  #otherwise there are gaps in the lines due to 24/7 crypto tradeability. 
+final_port_vol = pd.concat([agriculture_daily_returns_sliced_vol, crypto_sliced_vol, resources_sliced_vol, stocks_sliced_vol], axis=1).dropna()  #otherwise there are gaps in the lines due to 24/7 crypto tradeability. 
 
 #Build a figure for the portfolio dataframe.
 fig = px.line(final_port, x=final_port.index, y = final_port.columns)

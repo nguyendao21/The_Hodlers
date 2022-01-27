@@ -315,5 +315,5 @@ resources_new = pd.concat([gold, silver, crude_oil, lumber, gasoline],axis=1)
 #Drop 'Daily Returns' column. 
 resources_sliced = resources_new.iloc[:,[1,3,5,7,9]]
 
-
-
+#Create a dataframe to filter out daily returns % change.
+resources_sliced_vol = resources_new.iloc[:, [0,2,4,6,8]]
